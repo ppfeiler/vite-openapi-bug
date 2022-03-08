@@ -1,11 +1,29 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import HelloWorld from "./components/HelloWorld.vue";
+import TheWelcome from "./components/TheWelcome.vue";
+import { Pet, PetStatusEnum } from "@/api-client";
+import { ref } from "vue";
+import { PetApi } from "@/api-client";
+
+const pets = ref<Pet[]>();
+
+async function testOpenAPI() {
+  const { data } = await new PetApi().findPetsByStatus({
+    status: [PetStatusEnum.Available],
+  });
+  pets.value = data.slice(0, 10);
+}
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <img
+      alt="Vue logo"
+      class="logo"
+      src="./assets/logo.svg"
+      width="125"
+      height="125"
+    />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
@@ -18,7 +36,7 @@ import TheWelcome from './components/TheWelcome.vue'
 </template>
 
 <style>
-@import './assets/base.css';
+@import "./assets/base.css";
 
 #app {
   max-width: 1280px;

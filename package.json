@@ -2,6 +2,7 @@
   "name": "vite-openapi",
   "version": "0.0.0",
   "scripts": {
+    "predev": "rm -rf src/api-client && openapi-generator-cli generate -i ./spec/schema.yml -g typescript-axios -o src/api-client --additional-properties withSeparateModelsAndApi=true,supportsES6=true,useSingleRequestParameter=true,apiPackage=api,modelPackage=models",
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview --port 5050",
@@ -9,6 +10,8 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.4.26",
+    "axios": "^0.26.0",
     "vue": "^3.2.31"
   },
   "devDependencies": {
