@@ -2,7 +2,7 @@
   "name": "vite-openapi",
   "version": "0.0.0",
   "scripts": {
-    "predev": "rm -rf src/api-client && openapi-generator-cli generate -i ./spec/schema.yml -g typescript-axios -o src/api-client --additional-properties withSeparateModelsAndApi=true,supportsES6=true,useSingleRequestParameter=true,apiPackage=api,modelPackage=models",
+    "generate": "rm -rf src/api-client && openapi-generator-cli generate -i ./spec/schema.yml -g typescript-axios -o ./api-clients/leiv-core-api-client --additional-properties withSeparateModelsAndApi=true,supportsES6=true,useSingleRequestParameter=true,apiPackage=api,modelPackage=models,npmName=leiv-core-api-client",
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview --port 5050",
